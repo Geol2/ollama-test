@@ -1,7 +1,8 @@
 from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage
 
-llm = ChatOllama(model="qwen3:8b")
+llm = ChatOllama(model="qwen3:8b",
+                base_url="http://localhost:11434")
 
 def main():
     while True:
