@@ -1,10 +1,19 @@
-import ollama
+from langchain_ollama import ChatOllama
+from langchain_core.messages import HumanMessage
+
+llm = ChatOllama(model="qwen3:8b")
 
 def main():
-    print("Hello from ollama!")
+    while True:
+        user_input = input("질문을 입력하세요 (종료: exit) : ")
+        if user_input.lower() == "exit":
+            break
 
-    result = ollama.generate(model='qwen3.8b', prompt='왜 하늘은 파랗죠?')
-    print(result['response'])    
+        messages = [HumanMessage(content=user_input)]
+
+        response = llm.invoke(messages)
+
+        print(response)
 
 if __name__ == "__main__":
     main()
